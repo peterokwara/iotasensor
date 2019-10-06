@@ -1,0 +1,10 @@
+{
+  "name": "iotasensor",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Peter Okwara",
+  "license": "MIT",
+  "dependencies": {
+    "@iota/mam": "^0.7.3"
+  }
+}

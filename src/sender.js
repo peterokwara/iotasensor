@@ -7,8 +7,22 @@ const Converter = require("@iota/converter");
 // define the entry point into the tange
 const provider = "https://nodes.devnet.iota.org:443";
 
+// change mode of operation of MAM
+const mode = "private"; // public | private | restricted
+
+// add a sidekey
+const sideKey =
+  "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
 // initialize the mam object
 let state = Mam.init(provider);
+
+if (mode == "private") {
+  Mam.changeMode(state, "private");
+} else {
+  Mam.changeMode(state, "restricted", sideKey);
+}
+
 //console.log(state);
 
 // define the function to send the message
@@ -34,7 +48,7 @@ const sensorData = () => {
 
 // publish sensor data
 setInterval(() => {
-    publish(sensorData())
+  publish(sensorData());
 }, 10000);
 
 //publish("**ping**");
